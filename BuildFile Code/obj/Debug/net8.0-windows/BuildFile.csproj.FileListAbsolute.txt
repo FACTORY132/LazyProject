@@ -1,0 +1,16 @@
+C:\Users\USER\source\repos\BuildFile\BuildFile\bin\Debug\net8.0-windows\BuildFile.exe
+C:\Users\USER\source\repos\BuildFile\BuildFile\bin\Debug\net8.0-windows\BuildFile.deps.json
+C:\Users\USER\source\repos\BuildFile\BuildFile\bin\Debug\net8.0-windows\BuildFile.runtimeconfig.json
+C:\Users\USER\source\repos\BuildFile\BuildFile\bin\Debug\net8.0-windows\BuildFile.dll
+C:\Users\USER\source\repos\BuildFile\BuildFile\bin\Debug\net8.0-windows\BuildFile.pdb
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.Form1.resources
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.csproj.GenerateResource.cache
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.AssemblyInfoInputs.cache
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.AssemblyInfo.cs
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.csproj.CoreCompileInputs.cache
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.dll
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\refint\BuildFile.dll
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.pdb
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\BuildFile.genruntimeconfig.cache
+C:\Users\USER\source\repos\BuildFile\BuildFile\obj\Debug\net8.0-windows\ref\BuildFile.dll
