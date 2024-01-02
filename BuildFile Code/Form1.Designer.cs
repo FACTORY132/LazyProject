@@ -43,6 +43,7 @@
             Install_Folder_Dialog = new FolderBrowserDialog();
             InstallNpx_Title = new Label();
             InstallNpx_Checker = new CheckBox();
+            InstallVue = new Button();
             SuspendLayout();
             // 
             // Path_Label
@@ -60,7 +61,7 @@
             // Box
             // 
             Box.DropDownStyle = ComboBoxStyle.DropDownList;
-            Box.Items.AddRange(new object[] { "React", "Next" });
+            Box.Items.AddRange(new object[] { "React", "Next", "Vue" });
             Box.Location = new Point(90, 184);
             Box.Name = "Box";
             Box.Size = new Size(247, 23);
@@ -138,7 +139,7 @@
             // 
             // InstallNpx_Title
             // 
-            InstallNpx_Title.Location = new Point(56, 351);
+            InstallNpx_Title.Location = new Point(33, 352);
             InstallNpx_Title.Name = "InstallNpx_Title";
             InstallNpx_Title.Size = new Size(27, 15);
             InstallNpx_Title.TabIndex = 10;
@@ -147,16 +148,30 @@
             // 
             // InstallNpx_Checker
             // 
-            InstallNpx_Checker.Location = new Point(40, 353);
+            InstallNpx_Checker.Location = new Point(17, 354);
             InstallNpx_Checker.Name = "InstallNpx_Checker";
             InstallNpx_Checker.Size = new Size(15, 14);
             InstallNpx_Checker.TabIndex = 9;
+            // 
+            // InstallVue
+            // 
+            InstallVue.BackColor = SystemColors.Desktop;
+            InstallVue.Font = new Font("Snap ITC", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            InstallVue.ForeColor = SystemColors.ButtonHighlight;
+            InstallVue.Location = new Point(156, 324);
+            InstallVue.Name = "InstallVue";
+            InstallVue.Size = new Size(131, 25);
+            InstallVue.TabIndex = 11;
+            InstallVue.Text = "Install Vue";
+            InstallVue.UseVisualStyleBackColor = false;
+            InstallVue.Click += Vue_InstallerButton;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(410, 410);
+            Controls.Add(InstallVue);
             Controls.Add(InstallNpx_Title);
             Controls.Add(InstallNpx_Checker);
             Controls.Add(Name_Title);
@@ -169,14 +184,16 @@
             Controls.Add(Name_Label);
             Controls.Add(Install_Node);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Icon = (Icon)resources.GetObject("$this.Icon");
+            this.Icon = new("Icon/Drawing.ico");
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "Lazy";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lazy Builder";
             TransparencyKey = Color.Red;
             ResumeLayout(false);
             PerformLayout();
+
+         
         }
 
         private ComboBox Box;
@@ -194,5 +211,6 @@
         private Label Name_Title;
         private Label InstallNpx_Title;
         private CheckBox InstallNpx_Checker;
+        private Button InstallVue;
     }
 }

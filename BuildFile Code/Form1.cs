@@ -7,7 +7,6 @@ namespace BuildFile
     public partial class Form1 : Form
     {
         string? Path;
-        string? Command;
         readonly string Tailwind = "npm install -D tailwindcss@latest & npx tailwindcss init";
         ItemType? Type;
 
@@ -15,24 +14,21 @@ namespace BuildFile
         {
             InitializeComponent();
         }
-
-        private string Pack() => (Box.SelectedItem == null) ? "Select something!!" : "npx create-" + Command + "-app";
         private void Box_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (Box.SelectedIndex)
             {
                 case 0:
-                    Command = "react";
                     Type = ItemType.React;
                     break;
                 case 1:
-                    Command = "next";
                     Type = ItemType.Next;
+                    break;
+                case 2:
+                    Type = ItemType.Vue;
                     break;
             }
         }
-
-        
         static void RunPrompt(string? prompt)
         {
             if (prompt == null) return;
@@ -40,19 +36,52 @@ namespace BuildFile
             process.StartInfo.FileName = "cmd.exe";
             process.StartInfo.Arguments = prompt;
             process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
             process.Start();
+            process.WaitForExit();
+
+        }
+
+        string PathToFolder(string FileName)
+        {
+            return CheckBox.Checked ? Path + "\\" + Name_Label.Text + "\\" + FileName : "";
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
             Path = Path_Label.Text;
+            string Tailwind_Path = PathToFolder("tailwind.config.js");
             if (Box.SelectedItem != null && Path != "" && Name_Label.Text != "")
-                RunPrompt($"/c cd {Path} & {Pack()} {Name_Label.Text} & " +
+            {
+
+                switch (Type)
+                {
+                    case ItemType.React:
+                        RunPrompt($"/c cd {Path} & npx create-react-app@latest {Name_Label.Text} & " +
+                            $"cd {Name_Label.Text} & " +
+                            $"npm install react&latest react-dom@latest {(CheckBox.Checked ? "& " +
+                            Tailwind : "")} " +
+                            "& npm audit fix"
+                            );
+                        break;
+                    case ItemType.Next:
+                        RunPrompt($"/c cd {Path} & npx create-next-app@latest {Name_Label.Text} & " +
                           $"cd {Name_Label.Text} & " +
-                          $"npm install {((Type == ItemType.Next) ? "next@latest" : "")} " +
-                          $"react@latest react-dom@latest {(CheckBox.Checked ? "& " + Tailwind : "")} " +
-                          $"& npm audit fix ");
+                          $"npm install next@latest react&latest react-dom@latest {(CheckBox.Checked ? "& " +
+                          Tailwind : "")} " +
+                          "& npm audit fix"
+                          );
+                        break;
+                    case ItemType.Vue:
+                        RunPrompt($"/c cd {Path} & vue create {Name_Label.Text} " +
+                            $"cd {Name_Label.Text} " +
+                            $"{(CheckBox.Checked ? "& " + Tailwind : "")} & " +
+                            $"npm audit fix"
+                            );
+                        break;
+                }
+
+                FileOverwrite.TailwindConfigOverwrite(Tailwind_Path);
+            }
             else
                 MessageBox.Show((Box.SelectedItem == null) ? "Select something!!" : (Name_Label.Text == "" ? "Enter project name!!!" : "Enter Path!!"));
         }
@@ -63,9 +92,7 @@ namespace BuildFile
         {
             Dialog.SelectedPath = "C:\\";
             if (Dialog.ShowDialog() == DialogResult.OK)
-            {
                 Path_Label.Text = Dialog.SelectedPath;
-            }
         }
 
         private void Install_Node_Click(object sender, EventArgs e)
@@ -75,8 +102,12 @@ namespace BuildFile
                     $"curl -O https://nodejs.org/dist/v21.5.0/node-v21.5.0-x64.msi & " +
                     $"node-v21.5.0-x64.msi " +
                     $"{(InstallNpx_Checker.Checked ? "& npm install npx&latest" : "")}");
+
         }
 
-
+        private void Vue_InstallerButton(object sender, EventArgs e)
+        {
+            RunPrompt("npm install vue");
+        }
     }
 }

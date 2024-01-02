@@ -10,5 +10,6 @@ namespace BuildFile.Main
     {
         React = 0,
         Next = 1,
+        Vue = 2,
     }
 }
